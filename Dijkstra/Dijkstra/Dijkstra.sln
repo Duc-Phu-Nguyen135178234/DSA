@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Dijkstra", "Dijkstra\Dijkstra.pyproj", "{F9060C65-8923-444B-A6AA-F10B13F0983B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9060C65-8923-444B-A6AA-F10B13F0983B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9060C65-8923-444B-A6AA-F10B13F0983B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3EAC0E4-54F1-4A8E-8766-BE82CE653C7F}
+	EndGlobalSection
+EndGlobal
