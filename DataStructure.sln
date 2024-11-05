@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DataStructure", "DataStructure\DataStructure.pyproj", "{CBF61D3E-65F8-4E1F-BB6B-5EFF70AD874D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBF61D3E-65F8-4E1F-BB6B-5EFF70AD874D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF61D3E-65F8-4E1F-BB6B-5EFF70AD874D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7767B47B-A7ED-499B-AC6F-9FF60FE44F3F}
+	EndGlobalSection
+EndGlobal
