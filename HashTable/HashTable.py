@@ -1,4 +1,20 @@
-﻿# Hash Tables
+﻿# # Tables
+
+# ADT
+# Consists of a set of unordered records
+# Records are key-value pairs
+# Within a table, keys are unique
+# Operations:
+
+# insert(key, value)
+# modify(key, value)
+# search(key)
+# remove(key)
+# Implementations:
+
+# Sorted Array: Slow to insert/remove, search is fast (binary search), modify is fast
+# Unsorted Array: Fast to insert, everything else is slow
+# Hash Tables
 # Use a hash function to determine where to put the record.
 # Basic Algorithm: A hash table is basically an array.
 # •	hashvalue = hash(key);
