@@ -1,32 +1,31 @@
-﻿
+﻿# Hash Tables
+# Use a hash function to determine where to put the record.
+# Basic Algorithm: A hash table is basically an array.
+# •	hashvalue = hash(key);
+# •	hashindex = hashvalue % capacity of array
+# The hashindex is where a record goes.
+# Collision
+# •	Collision: When two records with unique keys end up at the same hashindex.
+# o	Number of possible keys > number of hash values > number of hash indexes.
+# o	Pigeonhole Principle: If there are n items categorized into m categories and n > m, there will be a category where there are 2 items.
+# Collision Resolution
+# Since collisions can’t be entirely eliminated, they must be handled.
+# Closed Addressing
+# •	At each array position, store a "list" of records.
+# o	Array-based list: bucketing
+# o	Linked-based list: chaining
+# •	The capacity of the table should be equal to the number of records you plan to store.
+# Open Addressing
+# •	If the spot at hashindex is not available, put the record in the next available spot.
+# o	Linear Probing: Increment to the next index, wrapping around if necessary.
+# o	Quadratic Probing (not covered in course): 1, 4, 9, 16, etc.
+# o	Double Hashing: Use a second hash function.
+# Removing in open addressing can be challenging:
+# •	Tombstoning: Leave a marker for deleted records
+# •	Non-tombstoning: Manage deletions differently
 
-# An abstract data type (ADT).
 
-# A collection of key–value pairs. A key–value pair is sometimes called Record.
-# This collection is not ordered. Each key is unique within the collection.
 
-# Insert(key, value) – add a key–value pair to the table
-# Modify(key, value) – modifies a key–value pair
-# Remove(key) – removes a record that has a matching key
-# Search(key) – find a record given a particular key – O(log n)
-# Create a table using a sorted array
-
-# Sorted array based on the key (ignore the value)
-# Sorted Arrays have the ability to do a binary search.
-
-# Linear search – O(n) where n is number of items in array
-# Binary search – can only be done if array is sorted. Also requires "random" access to each element. O(log n)
-# Search() – O(log n)
-# Remove(key) – O(log n) for the search + actual removal O(n)
-# Insert(key, value) – O(n)
-# Modify(key, value) – O(log n) for search + actual modification O(1)
-
-# Unsorted Array?
-
-# Search() – O(n)
-# Insert() – O(1)
-# Remove() – O(n) for search + actual removal O(n) → O(n)
-# Modify() – O(n) for search + actual modification O(1) → O(n)
 
 
 class hashtable():
@@ -85,6 +84,8 @@ class hashtable():
         return False
 
 # Hash Table using LinearProbing is Opening Address       
+# chu y function insert when get out while need to insert key value
+# remove function last line curr=(curr+1)%self.cap
 class LinearProbingHashTable:
     def __init__(self,key,value,cap=10):
         self.key=key 
@@ -133,7 +134,7 @@ class LinearProbingHashTable:
                 self.table[empty_idx]=curr_key,curr_value
                 self.table[curr]=None
                 empty_inx=curr
-            curr=(empty_idx+1)%self.cap
+            curr=(curr+1)%self.cap ### Chu Y
 
  
 

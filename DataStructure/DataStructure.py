@@ -44,7 +44,7 @@ class hashtable():
                 curr=curr.next
             new_node=self.Node(key,value)
             curr.next=new_node 
-            new_node.next=None 
+            new_node.pre=curr
     def remove(self,key,value):
         idx=self.hash_function(key)
         curr=self.table[idx]
