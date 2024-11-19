@@ -7,8 +7,11 @@ POSTORDER = 3
 BREADTHFIRST = 4
 REVERSE = 5
 
+# remember recursive must return subtree
+# print => Inorder, Preorder -left,data,right , 
+#          Reverse => right , data, left
+#          Breadthfirst : 
 class BST:
-    
     class Node:
         def __init__(self,data,left=None,right=None):
             self.data=data 
@@ -31,7 +34,7 @@ class BST:
                 subtree.right=BST.Node(value)
             else: 
                 subtree.right=self.ins(subtree.right,value)
-        return subtree
+        return subtree # chu y
     
     def insertRecursive(self,value):
         self.root=self.ins(self.root,value)
