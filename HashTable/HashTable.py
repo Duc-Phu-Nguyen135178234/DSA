@@ -42,8 +42,6 @@
 
 
 
-
-
 class hashtable():
     class Node():
         def __init__(self,key,value,next=None,pre=None):
@@ -114,9 +112,9 @@ class LinearProbingHashTable:
         idx=self.hash_function(key)
         orginal=idx
         while self.table[idx] is not None:
-            if self.table[idx][0]==key:
-                self.table[idx]=(key,value)
-            idx=(idx+1)%self.cap
+            # if self.table[idx][0]==key:
+            #     self.table[idx]=(key,value)
+            idx=(idx+1)%self.cap ### no update
             if orginal==idx:
                 raise IndexError('full')
         self.table[idx]=(key,value) 

@@ -42,7 +42,7 @@ class hashtable():
         else:
             while curr: ## chu y 
                 curr=curr.next
-            new_node=self.Node(key,value)
+            new_node=self.Node(key,value) #chu Y
             curr.next=new_node 
             new_node.pre=curr
     def remove(self,key,value):
@@ -237,7 +237,9 @@ class Heap():
 
 # AVL TREE => using node and height to balance tree
 # balance and updateheight no loop 
-# insert(subroot,new_node)
+# insert(subroot,data)=> subtree is None=Node(data)=> data<subtree.data(insert left or right)=> updateheight, balance_num
+# remove . balance = right ,right , right ans subroot.self.leftRotate
+# red tree => fix left .left , right and left in G
 class AVL():
     class Node():
         def __init__(self,data,left=None,right=None):
@@ -276,7 +278,7 @@ class AVL():
         if balance_num==-2:
             if self.balance(subroot.left)==1:
                subroot.left= self.leftRotate(subroot.left)
-            subroot=self.rightRotate(subroot)
+            subroot=self.rightRotate(subroot) ### chu y
         return subroot # chu y
     def rightRotate(self,A):
         B=A.left 
@@ -295,7 +297,9 @@ class AVL():
 
 
 
-#
+# redtree = righ,right,left,right
+# insert(self,data)=> nn => self.root is None=Node(data)=> call recursiion self.insertR(self.root,data)=> call function fix(nn)
+# insertR (self,curr,nn)=> check data<curr.data=> curr.left is None
 class RedBlackTree:
     class Node:
         def __init__(self, data):
@@ -313,13 +317,13 @@ class RedBlackTree:
             self.root = new_node
             self.root.color = 'BLACK' 
         else:
-            self.insert(self.root, new_node)
+            self.insertR(self.root, new_node)
             self.fix_insert(new_node)
 
     def insertR(self, current, new_node):
        
         if new_node.data < current.data:
-            if current.left is None:
+            if current.left is None:  ## Chu y check curr.left is None first
                 current.left = new_node
                 new_node.parent = current ## Chu Y
             else: 
@@ -380,7 +384,7 @@ class RedBlackTree:
     def left_rotate(self, A):
         B = A.right  
         A.right = B.left 
-        if B.left is not None:
+        if B.left is not None: # not None chu y
             B.left.parent = A 
         B.parent = A.parent  # 
         if A.parent is None:  
@@ -435,3 +439,136 @@ if __name__ == "__main__":
 
 
 
+
+class TableLinarProbing():
+    def __init__(self,key,value,cap=10):
+        self.key=key 
+        self.value=value 
+        self.cap=cap 
+        self.table=[None]*self.cap 
+    def insert(self,key,value):
+        idx=hash(key)%self.cap 
+        orginal=idx 
+        if self.table[idx] is None:
+            self.table[idx]=(key,value)
+        else:
+            while self.table[idx] is not None:
+                idx=(idx+1)%self.cap 
+                if orginal==idx:
+                    return False 
+            self.table[idx]=(key,value)
+            return True 
+    def search(self,key):
+        idx=hash(key)%self.cap 
+        orignal=idx 
+        while self.table is not None:
+            if self.table[idx][0]==key:
+                return True 
+            idx=(idx+1)%self.cap 
+            if orignal==idx:
+                return False 
+            
+    def remove (self,key):
+        idx=hash(key)%self.cap 
+        orginal=idx
+        while self.table[idx] is not None:
+            if self.table[idx][0]==key:
+                self.table[idx]=None 
+                empty_idx=idx 
+            idx=(idx+1)%self.cap 
+            if orginal==idx:
+                return False 
+        curr=(empty_idx+1)%self.cap 
+        while self.table[curr] is not None:
+            curr_key,curr_value=self.table[curr] 
+            properHash=hash(curr_key)%self.cap 
+            if properHash<=empty_idx<curr or \
+                curr<properHash<=empty_idx or \
+                empty_idx<curr<properHash:
+                self.table[empty_idx]=self.table[curr]
+                self.table[curr]=None 
+                empty_idx=curr 
+            curr=(curr+1)%self.cap
+class Tombstone():
+    def __init__(self,cap=10):
+        self.cap=cap 
+        self.table=[None]*self.cap 
+        self.tombstone='tombstone'
+    def insert(self,key,value):
+        idx=hash(key)%self.cap 
+        orginal=idx 
+        if self.table[idx] is None or self.table[idx]==self.tombstone:
+            self.table[idx]=(key,value)
+        else :
+            while self.table[idx] is not None and self.table[idx]!=self.tombstone:
+                idx=(idx+1)%self.cap 
+                if orginal==idx:
+                    return False 
+            self.table[idx]=(key,value)
+    def search(self,key):
+        idx=hash(key)%self.cap 
+        orginal=idx
+        while self.table[idx] is not None:
+            if self.table[idx][0]==key and self.table[idx] != self.tombstone:
+                return True 
+            idx=(idx+1)%self.cap 
+            if orginal==idx:
+                return False 
+        return False 
+    def remove(self,key):
+        idx=hash(key)%self.cap 
+        orginal=idx 
+        while self.table[idx] is not None:
+            if self.table[idx][0]==key and self.table[idx]!=self.tombstone:
+                self.table[idx]=self.tombstone 
+                return True 
+            idx=(idx+1)%self.cap 
+            if orginal==idx:
+                return False 
+class tablechain():
+    class Node():
+        def __init__(self,key,value,next=None,pre=None):
+            self.key=key 
+            self.value=value 
+            self.next=next 
+            self.pre=pre 
+    def __init__(self,cap):
+        self.cap=cap 
+        self.table=[None]*self.cap 
+    def insert(self,key,value):
+        idx=hash(key)%self.cap 
+        curr=self.table[idx] 
+        if self.table[idx] is None :
+            self.table[idx]=self.Node(key,value)
+        else:
+            while curr.next :
+                curr=curr.next
+            self.table[idx]=self.Node(key,value)
+                
+    def search(self,key):
+        idx=hash(key)%self.cap 
+        curr=self.table[idx]
+        while curr :
+            if curr.key==key :
+                return True 
+            curr=curr.next
+    def remove(self,key):
+        idx=hash(key)%self.cap 
+        curr=self.table[idx]
+        while curr :
+            if curr.key==key:
+                    if curr.pre is None:
+                        self.table[idx]=curr.next 
+                        if curr.next :
+                            curr.next.pre=None 
+                    elif curr.next is None:
+                        curr.pre.next=None 
+                    else:
+                        pre_node=curr.pre 
+                        next_node=curr.next 
+                        pre_node.next=next_node 
+                        next_node.pre=pre_node 
+                
+                   
+            
+           
