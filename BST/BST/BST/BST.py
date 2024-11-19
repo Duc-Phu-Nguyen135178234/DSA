@@ -8,13 +8,16 @@ BREADTHFIRST = 4
 REVERSE = 5
 
 class BST:
+    
     class Node:
         def __init__(self,data,left=None,right=None):
             self.data=data 
             self.left=left
             self.right=right
+            
     def __init__(self):
         self.root=None 
+        
     def ins(self,subtree,value):
         if subtree is None:
             return BST.Node(value)
@@ -29,23 +32,32 @@ class BST:
             else: 
                 subtree.right=self.ins(subtree.right,value)
         return subtree
+    
     def insertRecursive(self,value):
         self.root=self.ins(self.root,value)
+        
+
     def printInorder(self,subtree):
         if subtree is not None:
             self.printInorder(subtree.left)
             print(subtree.data)
             self.printInorder(subtree.right)
+            
+
     def printReverse(self,subtree):
         if subtree is not None:
             self.printReverse(subtree.right)
             print(subtree.data)
             self.printReverse(subtree.left)
+            
+
     def printPreorder(self,subtree):
         if subtree is not None:
             print(subtree.data)
             self.printPreorder(subtree.left)
             self.printPreorder(subtree.right)
+            
+
     def Breadthfirst(self):
         q=Queue()
         q.enqueue(self.root)
@@ -56,10 +68,7 @@ class BST:
                 if curr.left:
                     curr.left=q.enqueue(curr.left)
                 if curr.right:
-                    curr.right=q.enqueue(curr.right)
-        
-        
-
+                    curr.right=q.enqueue(curr.right)  
 
     def print(self, mode=INORDER):
         if mode == INORDER:
