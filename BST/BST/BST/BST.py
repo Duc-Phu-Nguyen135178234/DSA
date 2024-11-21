@@ -94,4 +94,4 @@ tree.insertRecursive(35)
 tree.insertRecursive(30)
 tree.insertRecursive(40)
 
-tree.print(PREORDER)
+tree.print(BREADTHFIRST)
