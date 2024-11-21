@@ -81,8 +81,8 @@ class BST:
         elif mode == PREORDER:
             self.printPreorder(self.root)
         elif mode == BREADTHFIRST:
-            self.Breadthfirst()
-
+            self.Breadthfirst()          
+  
 # Testing the corrected implementation
 tree = BST()
 tree.insertRecursive(20)
